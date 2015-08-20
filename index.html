@@ -10,9 +10,11 @@
   <script id="display-groups" type="text/x-handlebars-template">
   <div>
   	{{#each this}}
-    	<div id="group{{@index}}"><h2>Group {{plus1 @index}}:</h2>{{#each this}}
+    	<div id="group{{plus1 @index}}" class="animate js-animate">
+        <h2>Group {{plus1 @index}}:</h2>{{#each this}}
 			<p>{{this}}</p>
-    	{{/each}}</div>
+    	{{/each}}
+    </div>
     {{/each}}
   </div>
 </script>
@@ -46,7 +48,7 @@
                 <button class="js-team-size" data-num="10">10</button>
             </div>
         </div>
-        <div id="group-container"></div>
+        <div id="group-container" class="hidden"></div>
     </div>
 </body>
 </html>

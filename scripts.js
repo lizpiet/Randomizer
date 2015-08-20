@@ -26,9 +26,11 @@ $(document).ready(function(){
 
 	// listener for generate button
 	$('#generator').on('click', function(){
+
+			$('.hidden').css('display', 'none');
 			var $selected = $('#control-panel .selected');
 			$('#group-container').empty();
-			
+
 		if($selected.length == 0)
 		{
 			alert("You need to select a number of groups or team size to generate groups.");
@@ -47,11 +49,11 @@ $(document).ready(function(){
 			randomizer(randomArray);
 		}
 
-		console.log(groups, typeof groups);
 		var source = $("#display-groups").html();
 		var template = Handlebars.compile(source);
-
 		$('#group-container').html(template(groups));
+
+		$('#group-container').slideDown('slow')
 	});
 });
 
