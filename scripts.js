@@ -4,69 +4,58 @@ var students = ["James", "Ben", "Jake", "Jason N.", "Shawn",
 				"Liz", "Alan", "Jason S.", "Brook", "Garret", "Vas", 
 				 "Kim", "Matt", "Brenden" ];
 
-var groups = [];
-var groupSize = 3;
+var groups = [];// to store the randomized groups, cleared out and redone if needed
+var groupSize;// global variable to store group size in
 
-// students.sort(function(){
-// 	return 0.5 - Math.random();
-// })
 $(document).ready(function(){
-	console.log("Ready");
 	// processing for number of teams selection
 	$('#num-of-teams').on('click', '.js-num-teams', function () {
-		$('#team-size').find('.selected').removeClass('selected');
-		$('#num-of-teams').find('.selected').removeClass('selected');
-		$(this).addClass('selected');
-		// alert("clicked");
-
+		$('#control-panel').find('.selected').removeClass('selected');// clears out selected class from all buttons, in size or number categories
+		$(this).addClass('selected');// adds selected class to button that was clicked
 	});
-	// 
+
+	// processing for team size selection
 	$('#team-size').on('click', '.js-team-size', function () {
-		$('#num-of-teams').find('.selected').removeClass('selected');
-		$('#team-size').find('.selected').removeClass('selected');
-		$(this).addClass('selected');
-
+		$('#control-panel').find('.selected').removeClass('selected');// clears out selected class from all buttons, in size or number categories
+		$(this).addClass('selected');// adds selected class to button that was clicked
 	});
+
+	// listener for generate button
 	$('#generator').on('click', function(){
-		// groupSize = parseInt($('#num-of-teams .js-num-teams').hasClass('selected').val());
-		if($('#control-panel .selected').length == 0)
+		var $selected = $('#control-panel .selected');
+
+		if($selected.length == 0)
 		{
 			alert("You need to select a number of groups or team size to generate groups.");
 		}else
 		{
-			students.sort(function() { return 0.5 - Math.random();});
-			var randomArray = students.slice();
-			// console.log("students", students);
-			var $selected = $('#control-panel .selected');
-			groupSize = $selected.data('num');
-			if($selected.parent().attr('id') == 'team-size'){
-				console.log('Select by team size: '+ groupSize);
-			}else
-			{
+			var randomArray = students.slice();// copies all of the student array leaving the original intact
+			randomArray.sort(function() { return 0.5 - Math.random();});// sorts students in random order
+			groupSize = $selected.data('num');// grabs the number data attribute to figure out how big a group or number of teams to create
+
+			// if number of teams is selected, converts number of teams to how many per group
+			if($selected.parent().attr('id') == 'num-of-teams') {
 				groupSize = calcGroupSize(students.length, groupSize);
-				console.log('Select by number of groups: '+ groupSize);
 			}
-			// var groups = [];
+
+			// calls randomizer, which creates the arrays for each group
 			randomizer(randomArray);
-			console.log("after random", students);
-			console.log(groups);
 		}
 
 	});
+
 // takes in array length and number of teams
 function calcGroupSize(len, num)
 {
-	console.log(len +" people, to break into "+ num +" teams: "+ Math.floor(len / num));
 	return Math.floor(len / num);
 }
 
+// takes in an array and splits it up by global group size setting and pushes it to the global "groups" array
 function randomizer(array){
 	var counter = 0;
-	groups = [];
+	groups = [];// clears out global groups, in case of re-randomization
 	while(array.length > 0){
-		console.log("length", array.length);
-		// if(array.length % groupSize == 1)
-		if(array.length == groupSize + 1)
+		if(array.length == groupSize + 1)// checks if there will be 1 person left by themselves and instead adds them to the last group
 		{
 			groups.push(array.splice(0, groupSize + 1));
 		}else
@@ -78,37 +67,4 @@ function randomizer(array){
 	}
 }
 
-// console.log(groups);
-
 });
-
-
-
-
-
-
-
-
-// function randomNumber(max){
-
-// return Math.floor(Math.random() * max);				//Randomizer
-
-// }
-
-// 
-
-// function randomizer(array){							//
-// array.length --;
-
-// }
-
-
-
-
-
-
-
-
-
-
-console.log();
