@@ -1,7 +1,11 @@
+Handlebars.registerHelper("plus1", function(value, options)
+{
+    return parseInt(value) + 1;
+});
 
-var students = ["James", "Ben", "Jake", "Jason N.", "Shawn", 
-				"Martha", "Madeleine", "Kamie", "Kate", "Katie", 
-				"Liz", "Alan", "Jason S.", "Brook", "Garret", "Vas", 
+var students = ["James", "Ben", "Jake", "Jason N.", "Shawn",
+				"Martha", "Madeleine", "Kamie", "Kate", "Katie",
+				"Liz", "Alan", "Jason S.", "Brook", "Garret", "Vas",
 				 "Kim", "Matt", "Brenden" ];
 
 var groups = [];// to store the randomized groups, cleared out and redone if needed
@@ -22,8 +26,9 @@ $(document).ready(function(){
 
 	// listener for generate button
 	$('#generator').on('click', function(){
-		var $selected = $('#control-panel .selected');
-
+			var $selected = $('#control-panel .selected');
+			$('#group-container').empty();
+			
 		if($selected.length == 0)
 		{
 			alert("You need to select a number of groups or team size to generate groups.");
@@ -42,12 +47,23 @@ $(document).ready(function(){
 			randomizer(randomArray);
 		}
 
+		console.log(groups, typeof groups);
+		var source = $("#display-groups").html();
+		var template = Handlebars.compile(source);
+
+		$('#group-container').html(template(groups));
 	});
+});
 
 // takes in array length and number of teams
 function calcGroupSize(len, num)
 {
-	return Math.floor(len / num);
+	var size = Math.floor(len / num);
+	if(size < 2)// checks if there will be groups of 1 with Math.floor. If will be group size under 2, will round up
+	{
+		size = Math.ceil(len / num);
+	}
+	return size;
 }
 
 // takes in an array and splits it up by global group size setting and pushes it to the global "groups" array
@@ -66,5 +82,3 @@ function randomizer(array){
 		counter += groupSize;
 	}
 }
-
-});

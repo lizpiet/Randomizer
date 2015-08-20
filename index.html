@@ -7,9 +7,18 @@
     <script src="scripts.js"></script>
 </head>
 <body>
+  <script id="display-groups" type="text/x-handlebars-template">
+  <div>
+  	{{#each this}}
+    	<div id="group{{@index}}"><h2>Group {{plus1 @index}}:</h2>{{#each this}}
+			<p>{{this}}</p>
+    	{{/each}}</div>
+    {{/each}}
+  </div>
+</script>
     <div id="container">
         <h1>Group Randomizer</h1>
-        <div id="control-panel">  
+        <div id="control-panel">
             <div id="instructions">Do some stuff with buttons to make groups.</div>
             <div id="num-of-teams">
                 <p>Number of Teams: </p>
@@ -21,7 +30,7 @@
                 <button class="js-num-teams" data-num="7">7</button>
                 <button class="js-num-teams" data-num="8">8</button>
                 <button class="js-num-teams" data-num="9">9</button>
-                <button class="js-num-teams" data-num="10">10</button>    
+                <button class="js-num-teams" data-num="10">10</button>
                 <button id="generator">Generate!</button>
             </div>
             <div id="team-size">
@@ -36,7 +45,7 @@
                 <button class="js-team-size" data-num="9">9</button>
                 <button class="js-team-size" data-num="10">10</button>
             </div>
-        </div>  
+        </div>
         <div id="group-container"></div>
     </div>
 </body>
