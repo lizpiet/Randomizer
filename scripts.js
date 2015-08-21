@@ -26,6 +26,7 @@ $(document).ready(function(){
 
 	// listener for generate button
 	$('#generator').on('click', function(){
+      console.log('Generate clicked!');
 
 			$('.hidden').css('display', 'none');
 			var $selected = $('#control-panel .selected');
