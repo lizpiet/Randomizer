@@ -1,9 +1,3 @@
-Handlebars.registerHelper("plus1", function(value, options)
-{
-    return parseInt(value) + 1;
-});
-
-
 var students = ["James", "Ben", "Jake", "Jason N.", "Shawn",
 				"Martha", "Madeleine", "Kamie", "Kate", "Katie",
 				"Liz", "Alan", "Jason S.", "Brook", "Garret", "Vas",
