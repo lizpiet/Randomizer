@@ -9,44 +9,37 @@
 </head>
 <body>
   <script id="display-groups" type="text/x-handlebars-template">
-  <div>
-  	{{#each this}}
-    	<div id="group{{plus1 @index}}" class="animate js-animate">
-        <h2>Group {{plus1 @index}}:</h2>{{#each this}}
-			<p>{{this}}</p>
-    	{{/each}}
-    </div>
-    {{/each}}
-  </div>
 </script>
     <div id="container">
         <h1>Group Randomizer</h1>
         <div id="control-panel">
             <div id="instructions">Do some stuff with buttons to make groups.</div>
             <div id="num-of-teams">
-                <p>Number of Teams: </p>
-                <button class="js-num-teams" data-num="2">2</button>
-                <button class="js-num-teams" data-num="3">3</button>
-                <button class="js-num-teams" data-num="4">4</button>
-                <button class="js-num-teams" data-num="5">5</button>
-                <button class="js-num-teams" data-num="6">6</button>
-                <button class="js-num-teams" data-num="7">7</button>
-                <button class="js-num-teams" data-num="8">8</button>
-                <button class="js-num-teams" data-num="9">9</button>
-                <button class="js-num-teams" data-num="10">10</button>
-                <button id="generator">Generate!</button>
+                <p><b>Number of Teams: </b></p>
+                <button class="js-num-teams btn btn-primary" data-num="2">2</button>
+                <button class="js-num-teams btn btn-primary" data-num="3">3</button>
+                <button class="js-num-teams btn btn-primary" data-num="4">4</button>
+                <button class="js-num-teams btn btn-primary" data-num="5">5</button>
+                <button class="js-num-teams btn btn-primary" data-num="6">6</button>
+                <button class="js-num-teams btn btn-primary" data-num="7">7</button>
+                <button class="js-num-teams btn btn-primary" data-num="8">8</button>
+                <button class="js-num-teams btn btn-primary" data-num="9">9</button>
+                <button class="js-num-teams btn btn-primary" data-num="10">10</button>
             </div>
             <div id="team-size">
-                <p>Team Size: </p>
-                <button class="js-team-size" data-num="2">2</button>
-                <button class="js-team-size" data-num="3">3</button>
-                <button class="js-team-size" data-num="4">4</button>
-                <button class="js-team-size" data-num="5">5</button>
-                <button class="js-team-size" data-num="6">6</button>
-                <button class="js-team-size" data-num="7">7</button>
-                <button class="js-team-size" data-num="8">8</button>
-                <button class="js-team-size" data-num="9">9</button>
-                <button class="js-team-size" data-num="10">10</button>
+                <p><b>Team Size:</b></p>
+                <button class="js-team-size btn btn-primary" data-num="2">2</button>
+                <button class="js-team-size btn btn-primary" data-num="3">3</button>
+                <button class="js-team-size btn btn-primary" data-num="4">4</button>
+                <button class="js-team-size btn btn-primary" data-num="5">5</button>
+                <button class="js-team-size btn btn-primary" data-num="6">6</button>
+                <button class="js-team-size btn btn-primary" data-num="7">7</button>
+                <button class="js-team-size btn btn-primary" data-num="8">8</button>
+                <button class="js-team-size btn btn-primary" data-num="9">9</button>
+                <button class="js-team-size btn btn-primary" data-num="10">10</button>
+            </div>
+            <div id="generator-button">
+                <button id="generator" class="btn btn-danger">Generate!</button>
             </div>
         </div>
         <div id="group-container" class="hidden"></div>
