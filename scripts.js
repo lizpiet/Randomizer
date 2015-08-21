@@ -3,6 +3,7 @@ Handlebars.registerHelper("plus1", function(value, options)
     return parseInt(value) + 1;
 });
 
+
 var students = ["James", "Ben", "Jake", "Jason N.", "Shawn",
 				"Martha", "Madeleine", "Kamie", "Kate", "Katie",
 				"Liz", "Alan", "Jason S.", "Brook", "Garret", "Vas",
@@ -49,9 +50,9 @@ $(document).ready(function(){
 			randomizer(randomArray);
 		}
 
-		var source = $("#display-groups").html();
-		var template = Handlebars.compile(source);
-		$('#group-container').html(template(groups));
+		// create group output in EJS
+		var ejsData = new EJS({url: 'group.ejs'}).render(groups);
+		$('#group-container').html(ejsData);
 
 		$('#group-container').slideDown('slow')
 	});
